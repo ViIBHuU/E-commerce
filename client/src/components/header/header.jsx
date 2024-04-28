@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Box, Typography, IconButton, Drawer, List, styled } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 
@@ -43,6 +44,7 @@ const Header = () => {
     const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
 
     const [open, setOpen] = useState(false);
+    const navigate=useNavigate();
 
     const handleClose = () => {
         setOpen(false);
@@ -50,6 +52,10 @@ const Header = () => {
 
     const handleOpen = () => {
         setOpen(true);
+    }
+    
+    const GotoHome=()=>{
+        navigate('/');
     }
 
     const list = () => (
@@ -76,7 +82,7 @@ const Header = () => {
                 <Drawer open={open} onClose={handleClose}>
                     {list()}
                 </Drawer>
-                    <img src={logoURL} style={{ width: 75,marginLeft:110 }} />
+                    <img onClick={()=>GotoHome()} src={logoURL} style={{ width: 75,marginLeft:110 }} />
                     <Box component="span" style={{ display: 'flex' }}>
                         <SubHeading>Explore
                             <Box component="span" style={{color:'#FFE500'}}>
